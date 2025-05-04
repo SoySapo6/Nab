@@ -42,17 +42,16 @@ const server = app.listen(PORT, () => {
 
 // Variable para controlar intentos de escribir el número
 let numeroIntentos = 0;
-const numeroMaximoIntentos = 5;
+const numeroMaximoIntentos = 20;
 
 // Función para iniciar el bot usando 'npm run code' y escribir automáticamente el número
 function startBot() {
   console.log('Iniciando YukiBot-MD usando npm run code...');
   
   // Usamos npm run code en lugar de node index.js
-  const bot = spawn('npm', ['run', 'code'], {
-    stdio: ['pipe', 'inherit', 'inherit'],
-    shell: true
-  });
+  const bot = spawn('node', ['index.js'], {
+     stdio: 'inherit'
+   });
   
   // Guardar referencia global al proceso del bot
   globalBot = bot;
